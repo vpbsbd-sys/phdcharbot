@@ -1,0 +1,567 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+:root{
+  --maroon:#6B2737;
+  --maroon-deep:#4A1B27;
+  --gold:#C9A24B;
+  --gold-soft:#EFE0BC;
+  --cream:#FBF7EF;
+  --cream-deep:#F1E8D6;
+  --ink:#2B231F;
+  --ink-soft:#7A7066;
+  --line:#E3D8C2;
+  --good:#3F6B4F;
+}
+*{box-sizing:border-box;}
+.su-root{
+  font-family:'Inter','Noto Sans Devanagari',sans-serif;
+  color:var(--ink);
+  background:var(--cream-deep);
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+  padding:0;
+}
+.su-app{
+  width:100%;
+  max-width:560px;
+  min-height:100vh;
+  background:var(--cream);
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 0 40px rgba(74,27,39,0.12);
+  position:relative;
+}
+@media(min-width:560px){
+  .su-root{padding:24px 0;}
+  .su-app{min-height:90vh;border-radius:22px;overflow:hidden;border:1px solid var(--line);}
+}
+
+/* HEADER */
+.su-header{
+  background:linear-gradient(135deg,var(--maroon) 0%,var(--maroon-deep) 100%);
+  color:#fff;
+  padding:18px 20px 16px;
+  position:relative;
+  flex-shrink:0;
+}
+.su-header::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold));
+}
+.su-header-top{display:flex;align-items:center;gap:12px;}
+.su-crest{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--maroon-deep);
+  flex-shrink:0;
+  border:2px solid rgba(255,255,255,0.5);
+}
+.su-titles{flex:1;min-width:0;}
+.su-app-title{
+  font-family:'Fraunces','Noto Sans Devanagari',serif;
+  font-weight:700;font-size:16.5px;line-height:1.25;
+  margin:0;
+}
+.su-app-sub{font-size:12px;opacity:0.85;margin-top:2px;}
+.su-langs{display:flex;gap:6px;margin-top:14px;}
+.su-lang-btn{
+  flex:1;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.35);
+  color:#fff;
+  padding:7px 6px;
+  border-radius:9px;
+  font-size:12.5px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.15s;
+}
+.su-lang-btn.active{
+  background:var(--gold);
+  color:var(--maroon-deep);
+  border-color:var(--gold);
+}
+.su-lang-btn:hover{filter:brightness(1.06);}
+
+/* CHAT BODY */
+.su-body{
+  flex:1;
+  overflow-y:auto;
+  padding:18px 16px 8px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  scroll-behavior:smooth;
+}
+.su-row{display:flex;width:100%;}
+.su-row.bot{justify-content:flex-start;}
+.su-row.user{justify-content:flex-end;}
+.su-bubble{
+  max-width:86%;
+  padding:11px 14px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.55;
+  white-space:pre-line;
+}
+.su-bubble.bot{
+  background:#fff;
+  border:1px solid var(--line);
+  border-top-left-radius:4px;
+  color:var(--ink);
+}
+.su-bubble.bot .src{
+  display:block;margin-top:7px;font-size:11.5px;color:var(--ink-soft);
+  border-top:1px dashed var(--line);padding-top:6px;
+}
+.su-bubble.user{
+  background:var(--maroon);
+  color:#fff;
+  border-top-right-radius:4px;
+}
+.su-typing{
+  display:inline-flex;gap:4px;align-items:center;padding:4px 2px;
+}
+.su-typing span{
+  width:6px;height:6px;border-radius:50%;background:var(--ink-soft);
+  animation:su-bounce 1.1s infinite ease-in-out;
+}
+.su-typing span:nth-child(2){animation-delay:.15s;}
+.su-typing span:nth-child(3){animation-delay:.3s;}
+@keyframes su-bounce{0%,80%,100%{transform:translateY(0);opacity:.4;}40%{transform:translateY(-4px);opacity:1;}}
+
+/* CHIPS */
+.su-chip-wrap{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;max-width:92%;
+}
+.su-chip{
+  background:var(--cream-deep);
+  border:1px solid var(--gold);
+  color:var(--maroon-deep);
+  font-size:12.8px;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.15s;
+  line-height:1.3;
+}
+.su-chip:hover{background:var(--gold-soft);}
+.su-chip:active{transform:scale(0.97);}
+.su-chip.wide{flex-basis:100%;}
+
+/* INPUT */
+.su-inputbar{
+  flex-shrink:0;
+  display:flex;
+  gap:8px;
+  padding:12px 14px;
+  border-top:1px solid var(--line);
+  background:#fff;
+}
+.su-input{
+  flex:1;
+  border:1px solid var(--line);
+  background:var(--cream);
+  border-radius:22px;
+  padding:11px 16px;
+  font-size:14.5px;
+  font-family:inherit;
+  color:var(--ink);
+  outline:none;
+}
+.su-input:focus{border-color:var(--maroon);}
+.su-send{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--maroon);
+  color:#fff;border:none;cursor:pointer;
+  font-size:17px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:.15s;
+}
+.su-send:hover{background:var(--maroon-deep);}
+.su-send:active{transform:scale(0.94);}
+
+.su-foot{
+  font-size:10.8px;
+  color:var(--ink-soft);
+  text-align:center;
+  padding:8px 16px 12px;
+  background:#fff;
+  border-top:1px dashed var(--line);
+}
+
+.su-body::-webkit-scrollbar{width:6px;}
+.su-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+</style>
+
+<div class="su-root">
+  <div class="su-app">
+    <div class="su-header">
+      <div class="su-header-top">
+        <div class="su-crest">SU</div>
+        <div class="su-titles">
+          <p class="su-app-title" id="suAppTitle">Shivaji University — Ph.D. Helpdesk</p>
+          <div class="su-app-sub" id="suAppSub">Ask about admission, fees, guides, thesis &amp; more</div>
+        </div>
+      </div>
+      <div class="su-langs">
+        <button class="su-lang-btn active" data-lang="en" onclick="suSetLang('en')">English</button>
+        <button class="su-lang-btn" data-lang="hi" onclick="suSetLang('hi')">हिंदी</button>
+        <button class="su-lang-btn" data-lang="mr" onclick="suSetLang('mr')">मराठी</button>
+      </div>
+    </div>
+
+    <div class="su-body" id="suBody"></div>
+
+    <div class="su-inputbar">
+      <input class="su-input" id="suInput" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter')suSendUser();">
+      <button class="su-send" onclick="suSendUser()" aria-label="Send">➤</button>
+    </div>
+    <div class="su-foot" id="suFoot">ℹ️ Informational tool based on official university documents. Confirm with the PGBUTR Section or unishivaji.ac.in for final decisions.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+var UI = {
+  en:{
+    title:"Shivaji University — Ph.D. Helpdesk",
+    sub:"Ask about admission, fees, guides, thesis & more",
+    placeholder:"Type your question...",
+    topicsHeading:"Choose a topic to get started:",
+    allTopics:"📋 All topics",
+    fallback:"I couldn't find an exact match for that. Try one of the topics below, or rephrase your question.",
+    greeting:"Namaste! 🙏 I'm the Ph.D. admission helper for Shivaji University, Kolhapur. Tap a topic below, or type your question in English, Hindi or Marathi.",
+    disclaimer:"ℹ️ Informational tool based on official university documents (Prospectus 2025-26, SOP, Academic Calendar). For final/binding information, confirm with the PGBUTR Section or unishivaji.ac.in.",
+    moreHelp:"Need anything else?"
+  },
+  hi:{
+    title:"शिवाजी विश्वविद्यालय — पीएच.डी. सहायता केंद्र",
+    sub:"प्रवेश, शुल्क, गाइड, थीसिस आदि के बारे में पूछें",
+    placeholder:"अपना सवाल लिखें...",
+    topicsHeading:"शुरू करने के लिए एक विषय चुनें:",
+    allTopics:"📋 सभी विषय देखें",
+    fallback:"मुझे इसके लिए सटीक जवाब नहीं मिला। नीचे दिए गए विषयों में से कोई एक आज़माएँ, या अपना प्रश्न दूसरे तरीके से लिखें।",
+    greeting:"नमस्ते! 🙏 मैं शिवाजी विश्वविद्यालय, कोल्हापुर का पीएच.डी. प्रवेश सहायक हूँ। नीचे दिए गए विषयों में से चुनें, या अपना प्रश्न अंग्रेज़ी, हिंदी या मराठी में टाइप करें।",
+    disclaimer:"ℹ️ यह जानकारी विश्वविद्यालय के आधिकारिक दस्तावेज़ों (प्रॉस्पेक्टस 2025-26, SOP, शैक्षणिक कैलेंडर) पर आधारित है। अंतिम/बाध्यकारी जानकारी के लिए PGBUTR सेक्शन या unishivaji.ac.in से पुष्टि करें।",
+    moreHelp:"कुछ और जानना है?"
+  },
+  mr:{
+    title:"शिवाजी विद्यापीठ — पीएच.डी. मदत केंद्र",
+    sub:"प्रवेश, शुल्क, मार्गदर्शक, प्रबंध इत्यादींबाबत विचारा",
+    placeholder:"तुमचा प्रश्न टाइप करा...",
+    topicsHeading:"सुरुवात करण्यासाठी एक विषय निवडा:",
+    allTopics:"📋 सर्व विषय पाहा",
+    fallback:"मला यासाठी अचूक उत्तर सापडले नाही. खालीलपैकी एखादा विषय निवडा, किंवा तुमचा प्रश्न वेगळ्या पद्धतीने लिहा.",
+    greeting:"नमस्कार! 🙏 मी शिवाजी विद्यापीठ, कोल्हापूरचा पीएच.डी. प्रवेश सहाय्यक आहे. खालील विषयांपैकी एक निवडा, किंवा तुमचा प्रश्न इंग्रजी, हिंदी किंवा मराठीत टाइप करा.",
+    disclaimer:"ℹ️ ही माहिती विद्यापीठाच्या अधिकृत कागदपत्रांवर (प्रॉस्पेक्टस २०२५-२६, SOP, शैक्षणिक दिनदर्शिका) आधारित आहे. अंतिम/बंधनकारक माहितीसाठी PGBUTR विभाग किंवा unishivaji.ac.in येथे खात्री करा.",
+    moreHelp:"आणखी काही हवे आहे का?"
+  }
+};
+
+var TOPICS = [
+{
+  id:"eligibility", icon:"🎓",
+  label:{en:"Eligibility", hi:"पात्रता", mr:"पात्रता"},
+  keywords:["eligibility","eligible","qualification","master degree","masters degree","percentage required","marks required","who can apply","पात्रता","अर्हता","गुण","मास्टर्स डिग्री","पदव्युत्तर","पात्र कोण","किती टक्के","योग्यता"],
+  answer:{
+    en:"You need a Master's degree with at least 55% marks (50% for SC/ST/VJNT/OBC-NCL/EWS/Differently-Abled candidates) — either a 2-year Master's after a 3-year Bachelor's, or a 1-year Master's after a 4-year Bachelor's. If you hold a direct 4-year (8-semester) Bachelor's degree without a separate Master's, you need at least 75% marks (70% with relaxation). M.Phil. holders with 55% marks are also eligible.\nSource: Prospectus, R.R.D. 2",
+    hi:"पीएच.डी. में प्रवेश के लिए आपके पास कम से कम 55% अंकों के साथ स्नातकोत्तर (मास्टर्स) डिग्री होनी चाहिए (एससी/एसटी/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांग उम्मीदवारों के लिए 50%) — यह 3 वर्षीय स्नातक के बाद 2 वर्षीय मास्टर्स या 4 वर्षीय स्नातक के बाद 1 वर्षीय मास्टर्स हो सकती है। यदि आपके पास सीधे 4 वर्षीय (8 सेमेस्टर) स्नातक डिग्री है, तो कम से कम 75% अंक (छूट के साथ 70%) आवश्यक हैं। 55% अंकों के साथ एम.फिल. धारक भी पात्र हैं।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 2",
+    mr:"पीएच.डी. प्रवेशासाठी किमान ५५% गुणांसह पदव्युत्तर (मास्टर्स) पदवी आवश्यक आहे (अनुसूचित जाती/जमाती/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांग उमेदवारांसाठी ५०%) — ही ३ वर्षांच्या पदवीनंतरची २ वर्षांची मास्टर्स किंवा ४ वर्षांच्या पदवीनंतरची १ वर्षाची मास्टर्स असू शकते. जर तुमच्याकडे थेट ४ वर्षांची (८ सेमिस्टर) पदवी असेल, तर किमान ७५% गुण (सवलतीसह ७०%) आवश्यक आहेत. ५५% गुणांसह एम.फिल. धारकही पात्र आहेत.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. २"
+  }
+},
+{
+  id:"entrance", icon:"📝",
+  label:{en:"Entrance Test (CET)", hi:"प्रवेश परीक्षा (CET)", mr:"प्रवेश परीक्षा (CET)"},
+  keywords:["entrance test","cet","exam pattern","net exemption","syllabus","qualifying marks","negative marking","interview marks","प्रवेश परीक्षा","सीईटी","नेट","परीक्षा कैसी","निगेटिव्ह मार्किंग","नकारात्मक अंकन","गुण किती"],
+  answer:{
+    en:"All Ph.D. candidates (except foreign candidates) must clear a Common Entrance Test (CET) and Interview. CET = 100 marks (50 MCQs, 2 marks each): 50% Research Methodology + 50% subject-specific. No negative marking. Passing marks: 50% (45% for SC/ST/VJNT/OBC-NCL/EWS/Differently-Abled). If you've cleared NET (held after 27 March 2024), you're exempt from CET — your NET score is used instead, but you still need the interview. Final selection weightage: 70% test/NET score + 30% interview.\nSource: Prospectus, R.R.D. 5",
+    hi:"सभी पीएच.डी. उम्मीदवारों (विदेशी को छोड़कर) को कॉमन एंट्रेंस टेस्ट (सीईटी) और साक्षात्कार उत्तीर्ण करना अनिवार्य है। सीईटी = 100 अंक (50 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक): 50% शोध पद्धति + 50% विषय-विशिष्ट। नकारात्मक अंकन नहीं है। उत्तीर्ण अंक: 50% (एससी/एसटी/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांग के लिए 45%)। यदि आपने 27 मार्च 2024 के बाद नेट उत्तीर्ण किया है, तो सीईटी से छूट है — नेट स्कोर उपयोग होगा, पर साक्षात्कार देना ज़रूरी है। चयन भारांश: 70% टेस्ट/नेट स्कोर + 30% साक्षात्कार।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 5",
+    mr:"सर्व पीएच.डी. उमेदवारांना (परदेशी वगळता) कॉमन एंट्रन्स टेस्ट (सीईटी) आणि मुलाखत उत्तीर्ण करणे बंधनकारक आहे. सीईटी = १०० गुण (५० बहुपर्यायी प्रश्न, प्रत्येकी २ गुण): ५०% संशोधन पद्धती + ५०% विषय-विशिष्ट. निगेटिव्ह मार्किंग नाही. उत्तीर्ण गुण: ५०% (अनुसूचित जाती/जमाती/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांगांसाठी ४५%). जर तुम्ही २७ मार्च २०२४ नंतरची नेट उत्तीर्ण केली असेल, तर सीईटीतून सूट आहे — नेट स्कोअर वापरला जाईल, पण मुलाखत आवश्यक आहे. निवड भारांश: ७०% चाचणी/नेट गुण + ३०% मुलाखत.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. ५"
+  }
+},
+{
+  id:"apply", icon:"💻",
+  label:{en:"How to Apply", hi:"आवेदन कैसे करें", mr:"अर्ज कसा करावा"},
+  keywords:["apply","application","online application","how to apply","documents required","अर्ज कसा करावा","आवेदन कैसे करें","दस्तावेज","कागदपत्रे","application process"],
+  answer:{
+    en:"Applications are submitted ONLINE only — no hard copy is required (you may print one for your own records). Apply via the link on www.unishivaji.ac.in under the Admission tab → 'Ph.D. Admission'. You can select more than one subject, but must pay fee and appear for the entrance test separately for each subject. Required documents: marksheets, degree certificates, migration/transfer certificate, and an NOC if you're employed.\nSource: General Instructions for Ph.D. Entrance Test",
+    hi:"आवेदन केवल ऑनलाइन ही जमा किए जाते हैं — हार्ड कॉपी भेजने की आवश्यकता नहीं (अपने रिकॉर्ड के लिए प्रिंट निकाल सकते हैं)। www.unishivaji.ac.in पर एडमिशन टैब के अंतर्गत 'पीएच.डी. एडमिशन' के लिंक से आवेदन करें। एक से अधिक विषय चुन सकते हैं, पर हर विषय के लिए अलग शुल्क व अलग प्रवेश परीक्षा देनी होगी। आवश्यक दस्तावेज़: मार्कशीट, डिग्री प्रमाणपत्र, माइग्रेशन/ट्रांसफर सर्टिफिकेट, और (नौकरीपेशा हों तो) एनओसी।\nस्रोत: पीएच.डी. प्रवेश परीक्षा हेतु सामान्य निर्देश",
+    mr:"अर्ज फक्त ऑनलाइनच सादर केले जातात — हार्ड कॉपी पाठवण्याची गरज नाही (स्वतःच्या नोंदीसाठी प्रिंट काढू शकता). www.unishivaji.ac.in वर Admission टॅबखालील 'Ph.D. Admission' लिंकवरून अर्ज करा. एकापेक्षा जास्त विषय निवडता येतात, पण प्रत्येक विषयासाठी स्वतंत्र शुल्क व स्वतंत्र प्रवेश परीक्षा द्यावी लागेल. आवश्यक कागदपत्रे: गुणपत्रिका, पदवी प्रमाणपत्र, स्थलांतर/हस्तांतरण प्रमाणपत्र, आणि (नोकरीत असल्यास) एनओसी.\nस्रोत: पीएच.डी. प्रवेश परीक्षेसाठी सर्वसाधारण सूचना"
+  }
+},
+{
+  id:"dates", icon:"📅",
+  label:{en:"Important Dates", hi:"महत्वपूर्ण तारीखें", mr:"महत्त्वाच्या तारखा"},
+  keywords:["dates","important dates","calendar","schedule","when is","last date","academic calendar","तारीख","तारीखें","दिनदर्शिका","कधी","शेवटची तारीख"],
+  answer:{
+    en:"Per the University's Academic Calendar, the admission cycle generally runs as: intake capacity collection — June; online application window & CET — July to September; interview & merit list — September; RRC scrutiny & synopsis submission — October onward; new guide applications, RPE & coursework circulars — March. Exact dates change every year — always check the live notification on www.unishivaji.ac.in before applying.",
+    hi:"विश्वविद्यालय के शैक्षणिक कैलेंडर के अनुसार प्रवेश-चक्र सामान्यतः इस तरह चलता है: इनटेक क्षमता संकलन — जून; ऑनलाइन आवेदन व सीईटी — जुलाई से सितंबर; साक्षात्कार व मेरिट सूची — सितंबर; आरआरसी जांच व सिनॉप्सिस जमा — अक्टूबर से आगे; नए गाइड आवेदन, आरपीई व कोर्सवर्क परिपत्र — मार्च। सटीक तारीखें हर वर्ष बदलती हैं — आवेदन से पहले हमेशा www.unishivaji.ac.in पर ताज़ा सूचना देखें।",
+    mr:"विद्यापीठाच्या शैक्षणिक दिनदर्शिकेनुसार प्रवेश-चक्र साधारणपणे असे असते: इनटेक क्षमता संकलन — जून; ऑनलाइन अर्ज व सीईटी — जुलै ते सप्टेंबर; मुलाखत व गुणवत्ता यादी — सप्टेंबर; आरआरसी छाननी व सिनॉप्सिस सादरीकरण — ऑक्टोबरपासून पुढे; नवीन मार्गदर्शक अर्ज, आरपीई व कोर्सवर्क परिपत्रके — मार्च. नेमक्या तारखा दरवर्षी बदलतात — अर्ज करण्यापूर्वी नेहमी www.unishivaji.ac.in वरील ताजी सूचना पाहा."
+  }
+},
+{
+  id:"fees", icon:"💰",
+  label:{en:"Fees (India)", hi:"शुल्क (भारत)", mr:"शुल्क (भारत)"},
+  keywords:["fees","fee","cost","tuition fee","how much","amount","fees structure","entrance fee","शुल्क","फीस","किती पैसे","फी","प्रवेश शुल्क"],
+  answer:{
+    en:"Entrance Test fee: ₹850 (Open category) / ₹600 (Reserved category) — non-refundable. Annual Ph.D. fee for 2025-26 (Regular student/DRF): ₹16,473; for JRF/SRF/Teacher/Employed: ₹20,364. This covers registration, library, internet, tuition, lab-development, medical & welfare charges. Thesis evaluation fee is paid separately at the time of submission.\nSource: Prospectus, Annexure IX",
+    hi:"प्रवेश परीक्षा शुल्क: ₹850 (खुला वर्ग) / ₹600 (आरक्षित वर्ग) — अप्रतिदेय। 2025-26 के लिए वार्षिक पीएच.डी. शुल्क (नियमित छात्र/DRF): ₹16,473; जेआरएफ/एसआरएफ/शिक्षक/नौकरीपेशा के लिए: ₹20,364। इसमें पंजीकरण, पुस्तकालय, इंटरनेट, ट्यूशन, लैब विकास, चिकित्सा व कल्याण शुल्क शामिल हैं। थीसिस मूल्यांकन शुल्क जमा करते समय अलग से देना होता है।\nस्रोत: प्रॉस्पेक्टस, परिशिष्ट IX",
+    mr:"प्रवेश परीक्षा शुल्क: ₹८५० (खुला वर्ग) / ₹६०० (राखीव वर्ग) — परतावा न मिळणारे. २०२५-२६ साठी वार्षिक पीएच.डी. शुल्क (नियमित विद्यार्थी/DRF): ₹१६,४७३; जेआरएफ/एसआरएफ/शिक्षक/नोकरीत असणाऱ्यांसाठी: ₹२०,३६४. यामध्ये नोंदणी, ग्रंथालय, इंटरनेट, ट्यूशन, प्रयोगशाळा विकास, वैद्यकीय व कल्याण शुल्काचा समावेश आहे. प्रबंध मूल्यांकन शुल्क सादर करतेवेळी स्वतंत्रपणे भरावे लागते.\nस्रोत: प्रॉस्पेक्टस, परिशिष्ट IX"
+  }
+},
+{
+  id:"foreign", icon:"🌍",
+  label:{en:"Foreign Students", hi:"विदेशी छात्र", mr:"परदेशी विद्यार्थी"},
+  keywords:["foreign student","international student","visa","foreign","nri","विदेशी","परदेशी विद्यार्थी","व्हिसा"],
+  answer:{
+    en:"Foreign candidates with a Master's degree from a recognised foreign university are exempt from the entrance test, but must appear for an interview (in person or online) and need a consent letter from a prospective guide beforehand. A Research Visa endorsed for Shivaji University is mandatory. Total Ph.D. fee for foreign students is approx. ₹1,50,882 (rises 10% yearly), including hostel & insurance. Apply through the International Affairs Cell.\nContact: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
+    hi:"मान्यता प्राप्त विदेशी विश्वविद्यालय से मास्टर्स डिग्री रखने वाले विदेशी उम्मीदवारों को प्रवेश परीक्षा से छूट है, पर साक्षात्कार (व्यक्तिगत या ऑनलाइन) देना होगा और पहले से किसी संभावित गाइड का सहमति पत्र चाहिए। शिवाजी विश्वविद्यालय के लिए अनुमोदित रिसर्च वीज़ा अनिवार्य है। कुल पीएच.डी. शुल्क लगभग ₹1,50,882 (प्रतिवर्ष 10% वृद्धि), जिसमें हॉस्टल व बीमा शामिल है। इंटरनेशनल अफेयर्स सेल से आवेदन करें।\nसंपर्क: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
+    mr:"मान्यताप्राप्त परदेशी विद्यापीठातून मास्टर्स पदवी घेतलेल्या परदेशी उमेदवारांना प्रवेश परीक्षेतून सूट आहे, परंतु मुलाखत (प्रत्यक्ष किंवा ऑनलाइन) द्यावी लागते आणि आधी एखाद्या मार्गदर्शकाचे संमतीपत्र आवश्यक आहे. शिवाजी विद्यापीठासाठी मान्यताप्राप्त रिसर्च व्हिसा अनिवार्य आहे. एकूण पीएच.डी. शुल्क अंदाजे ₹१,५०,८८२ (दरवर्षी १०% वाढ), ज्यात वसतिगृह व विमा समाविष्ट आहे. इंटरनॅशनल अफेअर्स सेलमार्फत अर्ज करा.\nसंपर्क: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in"
+  }
+},
+{
+  id:"guide", icon:"👨‍🏫",
+  label:{en:"Research Guide", hi:"रिसर्च गाइड", mr:"मार्गदर्शक"},
+  keywords:["guide","supervisor","research guide","allotment of guide","rac","change of guide","गाइड","मार्गदर्शक","सुपरवाइज़र","पर्यवेक्षक","गाइड कैसे मिलेगा"],
+  answer:{
+    en:"Your Research Advisory Committee (RAC) allots a guide based on merit and your stated preferences (listed in order on the Input Sheet at interview), though RAC reserves the right to allot differently. A Professor can guide up to 8 scholars at a time, an Associate Professor up to 6, and an Assistant Professor up to 4 (plus 2 supernumerary international scholars). A guide cannot supervise a relative.\nSource: Prospectus, R.R.D. 9",
+    hi:"आपकी रिसर्च एडवाइज़री कमेटी (RAC) मेरिट और आपकी वरीयताओं (साक्षात्कार में इनपुट शीट पर क्रम से दी गई) के आधार पर गाइड आवंटित करती है, पर RAC के पास अलग आवंटन का अधिकार है। एक प्रोफेसर एक समय में अधिकतम 8, एसोसिएट प्रोफेसर 6, और असिस्टेंट प्रोफेसर 4 शोधार्थियों का मार्गदर्शन कर सकता है (साथ ही 2 अतिरिक्त अंतरराष्ट्रीय शोधार्थी)। कोई गाइड अपने रिश्तेदार को गाइड नहीं कर सकता।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 9",
+    mr:"तुमची रिसर्च अॅडव्हायझरी कमिटी (RAC) गुणवत्तेच्या व मुलाखतीत दिलेल्या प्राधान्यक्रमानुसार मार्गदर्शक नेमते, तरीही RAC ला वेगळा मार्गदर्शक नेमण्याचा अधिकार आहे. एक प्राध्यापक एका वेळी जास्तीत जास्त ८, सहयोगी प्राध्यापक ६, आणि सहाय्यक प्राध्यापक ४ विद्यार्थ्यांना मार्गदर्शन करू शकतात (अधिक २ अतिरिक्त आंतरराष्ट्रीय विद्यार्थी). मार्गदर्शक स्वतःच्या नातेवाईकाला मार्गदर्शन करू शकत नाही.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. ९"
+  }
+},
+{
+  id:"registration", icon:"📄",
+  label:{en:"Registration & Synopsis", hi:"पंजीकरण व सिनॉप्सिस", mr:"नोंदणी व सिनॉप्सिस"},
+  keywords:["registration","synopsis","proposal","registration process","RRC","पंजीकरण","नोंदणी","सिनॉप्सिस","शोध प्रस्ताव","संशोधन प्रस्ताव"],
+  answer:{
+    en:"After your provisional admission letter, submit your synopsis within one month. RAC arranges a presentation of your proposal; if revisions are suggested, resubmit within 15 days. Once RAC approves, it goes to the Research & Recognition Committee (RRC) for final approval — registration is confirmed once RRC approves your topic. Your registration date is 1st July or 1st January, whichever falls soonest after your entrance exam.\nSource: Prospectus, R.R.D. 6",
+    hi:"अनंतिम प्रवेश पत्र मिलने के बाद, एक महीने के भीतर सिनॉप्सिस जमा करें। RAC आपके प्रस्ताव की प्रस्तुति आयोजित करती है; संशोधन सुझाए जाने पर 15 दिनों में पुनः जमा करें। RAC की स्वीकृति के बाद रिपोर्ट अंतिम मंजूरी हेतु रिसर्च एंड रिकग्निशन कमेटी (RRC) के पास जाती है — RRC की मंजूरी के बाद पंजीकरण पक्का माना जाता है। पंजीकरण तिथि प्रवेश परीक्षा के बाद आने वाली निकटतम 1 जुलाई या 1 जनवरी होगी।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 6",
+    mr:"अनंतिम प्रवेशपत्र मिळाल्यानंतर, एका महिन्यात सिनॉप्सिस सादर करा. RAC तुमच्या प्रस्तावाचे सादरीकरण आयोजित करते; सुधारणा सुचवल्यास १५ दिवसांत पुन्हा सादर करा. RAC च्या मान्यतेनंतर अहवाल अंतिम मान्यतेसाठी रिसर्च अँड रेकग्निशन कमिटी (RRC) कडे जातो — RRC ने विषय मान्य केल्यावर नोंदणी निश्चित मानली जाते. नोंदणी तारीख प्रवेश परीक्षेनंतर येणारी सर्वात जवळची १ जुलै किंवा १ जानेवारी असेल.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. ६"
+  }
+},
+{
+  id:"coursework", icon:"📚",
+  label:{en:"Course Work", hi:"कोर्सवर्क", mr:"कोर्सवर्क"},
+  keywords:["course work","coursework","credits","rpe","research methodology course","कोर्सवर्क","क्रेडिट","आरपीई","अभ्यासक्रम"],
+  answer:{
+    en:"Ph.D. coursework requires a minimum of 12 credits, including Research & Publication Ethics (RPE) and a Research Methodology course, completed in your first one or two semesters. You need at least 55% marks (or equivalent grade) to continue and submit your thesis. Papers: Research Methodology/Quantitative Methods/Computer Applications (100 marks), Recent Trends in subject (100 marks), Optional paper (100 marks).\nSource: Prospectus, R.R.D. 10",
+    hi:"पीएच.डी. कोर्सवर्क में कम से कम 12 क्रेडिट आवश्यक हैं, जिसमें रिसर्च एंड पब्लिकेशन एथिक्स (RPE) और रिसर्च मेथडोलॉजी कोर्स शामिल है, जो पहले एक-दो सेमेस्टर में पूरा करना होता है। आगे बढ़ने व थीसिस जमा करने के लिए कम से कम 55% अंक चाहिए। पेपर्स: रिसर्च मेथडोलॉजी/क्वांटिटेटिव मेथड्स/कंप्यूटर एप्लीकेशन (100 अंक), विषय में हाल के रुझान (100 अंक), वैकल्पिक पेपर (100 अंक)।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 10",
+    mr:"पीएच.डी. कोर्सवर्कसाठी किमान १२ क्रेडिट आवश्यक आहेत, ज्यामध्ये रिसर्च अँड पब्लिकेशन एथिक्स (RPE) आणि रिसर्च मेथडॉलॉजी कोर्सचा समावेश आहे, जो पहिल्या एक-दोन सेमिस्टरमध्ये पूर्ण करावा लागतो. पुढे जाण्यासाठी व प्रबंध सादर करण्यासाठी किमान ५५% गुण आवश्यक आहेत. पेपर्स: रिसर्च मेथडॉलॉजी/क्वांटिटेटिव्ह मेथड्स/कॉम्प्युटर अॅप्लिकेशन (१०० गुण), विषयातील अलीकडील कल (१०० गुण), ऐच्छिक पेपर (१०० गुण).\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. १०"
+  }
+},
+{
+  id:"progress", icon:"📊",
+  label:{en:"Progress Reports", hi:"प्रगति रिपोर्ट", mr:"प्रगती अहवाल"},
+  keywords:["progress report","rac meeting","six months","progress","प्रगति रिपोर्ट","प्रगती अहवाल"],
+  answer:{
+    en:"You must submit/upload a progress report of your research every six months — this is your responsibility. Failure to do so can lead to cancellation of admission. Your department must convene an RAC meeting every six months for your progress presentation; this is also linked to further steps in the Ph.D. online system, so don't skip it.\nSource: SOP, Section H",
+    hi:"आपको हर छह महीने में अपने शोध की प्रगति रिपोर्ट जमा/अपलोड करनी होगी — यह आपकी ज़िम्मेदारी है। समय पर न करने पर प्रवेश रद्द हो सकता है। आपके विभाग को हर छह महीने में आपकी प्रगति प्रस्तुति के लिए RAC की बैठक बुलानी होगी; यह पीएच.डी. ऑनलाइन सिस्टम में आगे के चरणों से भी जुड़ा है, इसलिए इसे न छोड़ें।\nस्रोत: SOP, खंड H",
+    mr:"तुम्हाला दर सहा महिन्यांनी तुमच्या संशोधनाचा प्रगती अहवाल सादर/अपलोड करावा लागेल — ही तुमची जबाबदारी आहे. वेळेत न केल्यास प्रवेश रद्द होऊ शकतो. तुमच्या विभागाने दर सहा महिन्यांनी प्रगती सादरीकरणासाठी RAC ची बैठक बोलावणे आवश्यक आहे; हे पीएच.डी. ऑनलाइन सिस्टीममधील पुढील पायऱ्यांशीही जोडलेले आहे, त्यामुळे ते वगळू नका.\nस्रोत: SOP, विभाग H"
+  }
+},
+{
+  id:"duration", icon:"⏳",
+  label:{en:"Duration", hi:"अवधि", mr:"कालावधी"},
+  keywords:["duration","how many years","time period","extension","अवधि","कालावधी","किती वर्षे","विस्तार","कितने साल"],
+  answer:{
+    en:"The Ph.D. programme runs for a minimum of 3 years (including coursework) and a maximum of 6 years from admission. A further 2-year re-registration extension is possible (total max 8 years). Women and Persons with Disabilities (40%+) get an additional 2-year relaxation (total max 10 years). Women scholars can also avail up to 240 days of Maternity/Child Care Leave.\nSource: Prospectus, R.R.D. 3",
+    hi:"पीएच.डी. कार्यक्रम कम से कम 3 वर्ष (कोर्सवर्क सहित) और प्रवेश से अधिकतम 6 वर्ष तक चलता है। पुनः-पंजीकरण से 2 वर्ष का अतिरिक्त विस्तार संभव है (कुल अधिकतम 8 वर्ष)। महिलाओं व दिव्यांगजनों (40%+) को 2 अतिरिक्त वर्षों की छूट मिलती है (कुल अधिकतम 10 वर्ष)। महिला शोधार्थी 240 दिनों तक मातृत्व/शिशु देखभाल अवकाश भी ले सकती हैं।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 3",
+    mr:"पीएच.डी. कार्यक्रम किमान ३ वर्षे (कोर्सवर्कसह) आणि प्रवेशापासून जास्तीत जास्त ६ वर्षांपर्यंत चालतो. पुनर्नोंदणीद्वारे २ वर्षांची अतिरिक्त मुदतवाढ शक्य आहे (एकूण कमाल ८ वर्षे). महिला आणि दिव्यांग (४०%+) यांना २ अतिरिक्त वर्षांची सवलत मिळते (एकूण कमाल १० वर्षे). महिला संशोधक विद्यार्थिनी २४० दिवसांपर्यंत प्रसूती/बालसंगोपन रजा घेऊ शकतात.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. ३"
+  }
+},
+{
+  id:"thesis_submit", icon:"📤",
+  label:{en:"Thesis Submission", hi:"थीसिस जमा करना", mr:"प्रबंध सादरीकरण"},
+  keywords:["thesis submission","pre-final thesis","final thesis","submit thesis","थीसिस जमा","प्रबंध सादर","प्रबंध जमा"],
+  answer:{
+    en:"You can submit a pre-final thesis after 2 years 6 months from registration, with your coursework passing certificate, for RAC scrutiny. The final thesis can be submitted after 3 years from registration. If the final thesis isn't submitted within 6 months of pre-final scrutiny, double tuition fee is charged for the delay. Before final submission, you must present your work to the RAC.\nSource: Prospectus, R.R.D. 13",
+    hi:"पंजीकरण से 2 वर्ष 6 महीने पूरे होने के बाद, कोर्सवर्क उत्तीर्ण प्रमाणपत्र के साथ RAC जांच हेतु प्री-फाइनल थीसिस जमा की जा सकती है। पंजीकरण से 3 वर्ष बाद अंतिम थीसिस जमा की जा सकती है। प्री-फाइनल जांच के 6 महीने में अंतिम थीसिस जमा न करने पर दोगुना ट्यूशन शुल्क लगेगा। अंतिम जमा से पहले RAC के सामने अपना कार्य प्रस्तुत करना होगा।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 13",
+    mr:"नोंदणीपासून २ वर्षे ६ महिने पूर्ण झाल्यानंतर, कोर्सवर्क उत्तीर्ण प्रमाणपत्रासह RAC छाननीसाठी प्री-फायनल प्रबंध सादर करता येतो. नोंदणीपासून ३ वर्षांनंतर अंतिम प्रबंध सादर करता येतो. प्री-फायनल छाननीनंतर ६ महिन्यांत अंतिम प्रबंध सादर न केल्यास दुप्पट ट्यूशन फी आकारली जाईल. अंतिम सादरीकरणापूर्वी RAC समोर तुमचे काम सादर करावे लागेल.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. १३"
+  }
+},
+{
+  id:"thesis_format", icon:"🖨️",
+  label:{en:"Thesis Format & Plagiarism", hi:"थीसिस प्रारूप व प्लेजियरिज़्म", mr:"प्रबंध स्वरूप व साहित्यचौर्य"},
+  keywords:["thesis format","plagiarism","similarity","font","binding","थीसिस प्रारूप","साहित्यिक चोरी","साहित्यचौर्य","फॉन्ट","बाइंडिंग"],
+  answer:{
+    en:"Thesis must use Times New Roman font, A-4 paper, 3.5cm margins, 1.5 line spacing, printed both sides, bound with black cover & golden embossed letters. Submit 1 hard-bound copy + 5 abstract copies + 1 CD (PDF). Plagiarism check: up to 10% similarity is fine (no penalty), 10-40% requires resubmission within 6 months, 40-60% means 1-year debarment, above 60% means cancellation of registration.\nSource: Prospectus, R.R.D. 12 & Annexure II",
+    hi:"थीसिस में टाइम्स न्यू रोमन फॉन्ट, A-4 कागज़, 3.5 सेमी मार्जिन, 1.5 लाइन स्पेसिंग, दोनों तरफ प्रिंट, काले कवर व सुनहरे अक्षरों में बाइंडिंग होनी चाहिए। 1 हार्ड-बाउंड कॉपी + 5 सार प्रतियां + 1 सीडी (PDF) जमा करें। साहित्यिक चोरी जांच: 10% तक ठीक (कोई दंड नहीं), 10-40% में 6 महीने में पुनः जमा, 40-60% में 1 वर्ष का प्रतिबंध, 60% से अधिक पर पंजीकरण रद्द।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 12 व परिशिष्ट II",
+    mr:"प्रबंधासाठी टाईम्स न्यू रोमन फाँट, A-4 कागद, ३.५ सेमी समास, १.५ ओळींतील अंतर, दोन्ही बाजूंनी छपाई, काळ्या कव्हरवर सोनेरी अक्षरांत बांधणी आवश्यक आहे. १ हार्ड-बाउंड प्रत + ५ सारांश प्रती + १ सीडी (PDF) सादर करा. साहित्यचौर्य तपासणी: १०% पर्यंत ठीक (दंड नाही), १०-४०% मध्ये ६ महिन्यांत पुन्हा सादर, ४०-६०% मध्ये १ वर्षाची बंदी, ६०% पेक्षा जास्त असल्यास नोंदणी रद्द.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. १२ व परिशिष्ट II"
+  }
+},
+{
+  id:"defence", icon:"🎤",
+  label:{en:"Open Defence & Result", hi:"ओपन डिफेंस व परिणाम", mr:"ओपन डिफेन्स व निकाल"},
+  keywords:["open defence","viva","viva voce","result declaration","मौखिक परीक्षा","व्हायवा","निकाल","ओपन डिफेन्स","परिणाम"],
+  answer:{
+    en:"Your viva-voce/open defence is conducted by your Research Supervisor plus at least one external examiner, only after both external examiners give satisfactory reports recommending it. It's open to RAC members, faculty, and other research scholars, and can be held via video conferencing. The date of Open Defence is treated as your result declaration date. The full evaluation, from thesis submission to viva result, should finish within 6 months.\nSource: Prospectus, R.R.D. 14 & 15",
+    hi:"आपका वाइवा-वॉइस/ओपन डिफेंस तभी होता है जब दोनों बाहरी परीक्षक संतोषजनक रिपोर्ट देकर इसकी सिफारिश करें, और इसे आपका रिसर्च सुपरवाइज़र व कम से कम एक बाहरी परीक्षक मिलकर लेते हैं। यह RAC सदस्यों, संकाय व अन्य शोधार्थियों के लिए खुला होता है, और वीडियो कॉन्फ्रेंसिंग से भी हो सकता है। ओपन डिफेंस की तारीख ही परिणाम घोषणा की तारीख मानी जाती है। थीसिस जमा से वाइवा परिणाम तक की पूरी प्रक्रिया 6 महीने में पूरी होनी चाहिए।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 14 व 15",
+    mr:"तुमचा व्हायवा-व्हॉइस/ओपन डिफेन्स तेव्हाच होतो जेव्हा दोन्ही बाह्य परीक्षक समाधानकारक अहवाल देऊन शिफारस करतात, आणि तो तुमचे संशोधन मार्गदर्शक व किमान एक बाह्य परीक्षक एकत्र घेतात. हा RAC सदस्य, प्राध्यापक व इतर संशोधक विद्यार्थ्यांसाठी खुला असतो, आणि व्हिडिओ कॉन्फरन्सिंगद्वारेही घेता येतो. ओपन डिफेन्सची तारीख हीच निकाल घोषणेची तारीख मानली जाते. प्रबंध सादर करण्यापासून ते व्हायवा निकालापर्यंतची संपूर्ण प्रक्रिया ६ महिन्यांत पूर्ण व्हायला हवी.\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. १४ व १५"
+  }
+},
+{
+  id:"cancellation", icon:"↩️",
+  label:{en:"Cancellation & Refund", hi:"रद्द व वापसी", mr:"रद्द व परतावा"},
+  keywords:["cancellation","refund","cancel admission","withdraw","रद्द","परतावा","वापसी","कैंसिल"],
+  answer:{
+    en:"If you cancel within 6 months of your provisional admission letter: pay a ₹2,000 processing fee, and get your fees refunded (except registration & eligibility fees). After that — within 1 year of registration, after coursework, or after 3 years — you must clear outstanding annual fees; only Lab/Library deposits are refunded 100%, tuition & other fees are NOT refunded. (Separately, the UGC's general institutional fee-refund policy gives 100% refund up to 15 days before the notified admission deadline, scaling down to 0% after 30 days past it.)\nSource: Prospectus, R.R.D. 17 & UGC Fee Refund Policy 2024-25",
+    hi:"अनंतिम प्रवेश पत्र मिलने के 6 महीने के भीतर रद्द करने पर: ₹2,000 प्रोसेसिंग शुल्क देकर भरे गए शुल्क (पंजीकरण व पात्रता शुल्क छोड़कर) वापस मिलेंगे। इसके बाद — पंजीकरण के 1 वर्ष में, कोर्सवर्क बाद, या 3 वर्ष बाद — बकाया वार्षिक शुल्क चुकाना होगा; केवल लैब/लाइब्रेरी डिपॉज़िट 100% वापस होगी, ट्यूशन व अन्य शुल्क वापस नहीं होते। (अलग से, UGC की सामान्य संस्थागत शुल्क-वापसी नीति में, घोषित अंतिम तिथि से 15 दिन पहले तक 100% वापसी और 30 दिन बाद तक घटते क्रम में 0% तक वापसी का प्रावधान है।)\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 17 व UGC शुल्क वापसी नीति 2024-25",
+    mr:"अनंतिम प्रवेशपत्र मिळाल्यापासून ६ महिन्यांत प्रवेश रद्द केल्यास: ₹२,००० प्रक्रिया शुल्क भरून भरलेले शुल्क (नोंदणी व पात्रता शुल्क वगळता) परत मिळेल. त्यानंतर — नोंदणीच्या १ वर्षात, कोर्सवर्कनंतर, किंवा ३ वर्षांनंतर — थकित वार्षिक शुल्क भरावे लागेल; फक्त लॅब/ग्रंथालय डिपॉझिट १००% परत मिळेल, ट्यूशन व इतर शुल्क परत मिळत नाही. (स्वतंत्रपणे, यूजीसीच्या सर्वसाधारण संस्थात्मक शुल्क-परतावा धोरणानुसार, जाहीर अंतिम तारखेच्या १५ दिवस आधीपर्यंत १००% परतावा आणि ३० दिवसांनंतर ०% पर्यंत उतरता परतावा दिला जातो.)\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. १७ व यूजीसी शुल्क परतावा धोरण २०२४-२५"
+  }
+},
+{
+  id:"contact", icon:"☎️",
+  label:{en:"Contact / Help", hi:"संपर्क / मदद", mr:"संपर्क / मदत"},
+  keywords:["contact","helpline","phone number","email","address","help desk","संपर्क","फोन नंबर","ईमेल","मदत"],
+  answer:{
+    en:"PGBUTR / BUTR Section, Shivaji University, Kolhapur-416004, Maharashtra.\nPhone: 0231-2609139 / 2609296 / 9139\nEmail: mphilphd@unishivaji.ac.in or pgbutr3@unishivaji.ac.in\nWebsite: www.unishivaji.ac.in\nFor foreign students — International Affairs Cell: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
+    hi:"PGBUTR / BUTR सेक्शन, शिवाजी विश्वविद्यालय, कोल्हापुर-416004, महाराष्ट्र।\nफोन: 0231-2609139 / 2609296 / 9139\nईमेल: mphilphd@unishivaji.ac.in या pgbutr3@unishivaji.ac.in\nवेबसाइट: www.unishivaji.ac.in\nविदेशी छात्रों के लिए — इंटरनेशनल अफेयर्स सेल: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
+    mr:"PGBUTR / BUTR विभाग, शिवाजी विद्यापीठ, कोल्हापूर-४१६००४, महाराष्ट्र.\nफोन: 0231-2609139 / 2609296 / 9139\nईमेल: mphilphd@unishivaji.ac.in किंवा pgbutr3@unishivaji.ac.in\nसंकेतस्थळ: www.unishivaji.ac.in\nपरदेशी विद्यार्थ्यांसाठी — इंटरनॅशनल अफेअर्स सेल: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in"
+  }
+}
+];
+
+var suLang = "en";
+var suBody = document.getElementById('suBody');
+var suInput = document.getElementById('suInput');
+
+function suGreetWords(){
+  return ["hi","hello","hey","namaste","नमस्ते","नमस्कार","menu","help","topics","hii","hlo"];
+}
+
+function suSetLang(lang){
+  suLang = lang;
+  document.querySelectorAll('.su-lang-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+  var u = UI[lang];
+  document.getElementById('suAppTitle').textContent = u.title;
+  document.getElementById('suAppSub').textContent = u.sub;
+  document.getElementById('suFoot').textContent = u.disclaimer;
+  suInput.placeholder = u.placeholder;
+  suBody.innerHTML = "";
+  suBotSay(u.greeting, true);
+}
+
+function suEscape(s){
+  var d = document.createElement('div');
+  d.innerText = s;
+  return d.innerHTML;
+}
+
+function suScrollDown(){
+  setTimeout(function(){ suBody.scrollTop = suBody.scrollHeight; }, 60);
+}
+
+function suBotSay(text, withTopics){
+  var typingRow = document.createElement('div');
+  typingRow.className = 'su-row bot';
+  typingRow.innerHTML = '<div class="su-bubble bot"><div class="su-typing"><span></span><span></span><span></span></div></div>';
+  suBody.appendChild(typingRow);
+  suScrollDown();
+  setTimeout(function(){
+    typingRow.remove();
+    var row = document.createElement('div');
+    row.className = 'su-row bot';
+    var bubble = document.createElement('div');
+    bubble.className = 'su-bubble bot';
+    bubble.innerHTML = suEscape(text).replace(/\n/g,'<br>');
+    row.appendChild(bubble);
+    suBody.appendChild(row);
+    suScrollDown();
+    if(withTopics) suShowTopicChips();
+  }, 450);
+}
+
+function suUserSay(text){
+  var row = document.createElement('div');
+  row.className = 'su-row user';
+  row.innerHTML = '<div class="su-bubble user">'+suEscape(text)+'</div>';
+  suBody.appendChild(row);
+  suScrollDown();
+}
+
+function suShowTopicChips(){
+  var row = document.createElement('div');
+  row.className = 'su-row bot';
+  var wrap = document.createElement('div');
+  wrap.className = 'su-chip-wrap';
+  TOPICS.forEach(function(t){
+    var chip = document.createElement('div');
+    chip.className = 'su-chip';
+    chip.innerText = t.icon + ' ' + t.label[suLang];
+    chip.onclick = function(){ suUserSay(t.icon + ' ' + t.label[suLang]); suAnswerTopic(t); };
+    wrap.appendChild(chip);
+  });
+  row.appendChild(wrap);
+  suBody.appendChild(row);
+  suScrollDown();
+}
+
+function suShowAllTopicsButton(){
+  var row = document.createElement('div');
+  row.className = 'su-row bot';
+  var wrap = document.createElement('div');
+  wrap.className = 'su-chip-wrap';
+  var chip = document.createElement('div');
+  chip.className = 'su-chip wide';
+  chip.innerText = UI[suLang].allTopics;
+  chip.onclick = function(){ suUserSay(UI[suLang].allTopics); suBotSay(UI[suLang].topicsHeading, true); };
+  wrap.appendChild(chip);
+  row.appendChild(wrap);
+  suBody.appendChild(row);
+  suScrollDown();
+}
+
+function suAnswerTopic(topic){
+  suBotSay(topic.answer[suLang], false);
+  setTimeout(suShowAllTopicsButton, 520);
+}
+
+function suSearch(query){
+  var q = query.toLowerCase();
+  var best = null, bestScore = 0;
+  TOPICS.forEach(function(t){
+    var score = 0;
+    t.keywords.forEach(function(k){
+      if(q.indexOf(k.toLowerCase()) !== -1){ score += k.length; }
+    });
+    if(score > bestScore){ bestScore = score; best = t; }
+  });
+  return best;
+}
+
+function suSendUser(){
+  var val = suInput.value.trim();
+  if(!val) return;
+  suUserSay(val);
+  suInput.value = "";
+  var lower = val.toLowerCase();
+  if(suGreetWords().some(function(w){ return lower===w || lower.indexOf(w)!==-1; }) && val.length < 12){
+    suBotSay(UI[suLang].topicsHeading, true);
+    return;
+  }
+  var match = suSearch(val);
+  if(match){
+    suAnswerTopic(match);
+  } else {
+    suBotSay(UI[suLang].fallback, true);
+  }
+}
+
+// expose handlers used by inline onclick/onkeydown attributes in the HTML markup
+window.suSendUser = suSendUser;
+window.suSetLang = suSetLang;
+
+// init
+suSetLang('en');
+})();
+</script>
