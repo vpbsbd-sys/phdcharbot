@@ -219,7 +219,7 @@ html,body{margin:0;padding:0;}
       <div class="su-header-top">
         <div class="su-crest">SU</div>
         <div class="su-titles">
-          <p class="su-app-title" id="suAppTitle">Shivaji University — Ph.D. Helpdesk</p>
+          <p class="su-app-title" id="suAppTitle">Shivaji University, Kolhapur — Ph.D. Helpdesk</p>
           <div class="su-app-sub" id="suAppSub">Ask about admission, fees, guides, thesis &amp; more</div>
         </div>
       </div>
@@ -251,6 +251,7 @@ var UI = {
     topicsHeading:"Choose a topic to get started:",
     allTopics:"📋 All topics",
     fallback:"I couldn't find an exact match for that. Try one of the topics below, or rephrase your question.",
+    didYouMean:"I found a couple of topics that could match — which one did you mean?",
     greeting:"Namaste! 🙏 I'm the Ph.D. admission helper for Shivaji University, Kolhapur. Tap a topic below, or type your question in English, Hindi or Marathi.",
     disclaimer:"ℹ️ Informational tool based on official university documents (Prospectus 2025-26, SOP, Academic Calendar). For final/binding information, confirm with the PGBUTR Section or unishivaji.ac.in.",
     moreHelp:"Need anything else?"
@@ -262,6 +263,7 @@ var UI = {
     topicsHeading:"शुरू करने के लिए एक विषय चुनें:",
     allTopics:"📋 सभी विषय देखें",
     fallback:"मुझे इसके लिए सटीक जवाब नहीं मिला। नीचे दिए गए विषयों में से कोई एक आज़माएँ, या अपना प्रश्न दूसरे तरीके से लिखें।",
+    didYouMean:"मुझे इससे मिलते-जुलते कुछ विषय मिले — आपका मतलब इनमें से किस से था?",
     greeting:"नमस्ते! 🙏 मैं शिवाजी विश्वविद्यालय, कोल्हापुर का पीएच.डी. प्रवेश सहायक हूँ। नीचे दिए गए विषयों में से चुनें, या अपना प्रश्न अंग्रेज़ी, हिंदी या मराठी में टाइप करें।",
     disclaimer:"ℹ️ यह जानकारी विश्वविद्यालय के आधिकारिक दस्तावेज़ों (प्रॉस्पेक्टस 2025-26, SOP, शैक्षणिक कैलेंडर) पर आधारित है। अंतिम/बाध्यकारी जानकारी के लिए PGBUTR सेक्शन या unishivaji.ac.in से पुष्टि करें।",
     moreHelp:"कुछ और जानना है?"
@@ -273,6 +275,7 @@ var UI = {
     topicsHeading:"सुरुवात करण्यासाठी एक विषय निवडा:",
     allTopics:"📋 सर्व विषय पाहा",
     fallback:"मला यासाठी अचूक उत्तर सापडले नाही. खालीलपैकी एखादा विषय निवडा, किंवा तुमचा प्रश्न वेगळ्या पद्धतीने लिहा.",
+    didYouMean:"मला यासारखे काही विषय सापडले — तुम्हाला यापैकी कोणत्याबद्दल विचारायचे होते?",
     greeting:"नमस्कार! 🙏 मी शिवाजी विद्यापीठ, कोल्हापूरचा पीएच.डी. प्रवेश सहाय्यक आहे. खालील विषयांपैकी एक निवडा, किंवा तुमचा प्रश्न इंग्रजी, हिंदी किंवा मराठीत टाइप करा.",
     disclaimer:"ℹ️ ही माहिती विद्यापीठाच्या अधिकृत कागदपत्रांवर (प्रॉस्पेक्टस २०२५-२६, SOP, शैक्षणिक दिनदर्शिका) आधारित आहे. अंतिम/बंधनकारक माहितीसाठी PGBUTR विभाग किंवा unishivaji.ac.in येथे खात्री करा.",
     moreHelp:"आणखी काही हवे आहे का?"
@@ -283,7 +286,7 @@ var TOPICS = [
 {
   id:"eligibility", icon:"🎓",
   label:{en:"Eligibility", hi:"पात्रता", mr:"पात्रता"},
-  keywords:["eligibility","eligible","qualification","master degree","masters degree","percentage required","marks required","who can apply","पात्रता","अर्हता","गुण","मास्टर्स डिग्री","पदव्युत्तर","पात्र कोण","किती टक्के","योग्यता"],
+  keywords:["eligibility","eligible","qualification","qualify for phd","minimum qualification","master degree","masters degree","percentage required","marks required","minimum marks","who can apply","eligibility criteria","can i apply","bachelor degree","graduation percentage","पात्रता","अर्हता","गुण","किती गुण लागतात","मास्टर्स डिग्री","पदव्युत्तर","पात्र कोण","किती टक्के","योग्यता","कितने अंक चाहिए"],
   answer:{
     en:"You need a Master's degree with at least 55% marks (50% for SC/ST/VJNT/OBC-NCL/EWS/Differently-Abled candidates) — either a 2-year Master's after a 3-year Bachelor's, or a 1-year Master's after a 4-year Bachelor's. If you hold a direct 4-year (8-semester) Bachelor's degree without a separate Master's, you need at least 75% marks (70% with relaxation). M.Phil. holders with 55% marks are also eligible.\nSource: Prospectus, R.R.D. 2",
     hi:"पीएच.डी. में प्रवेश के लिए आपके पास कम से कम 55% अंकों के साथ स्नातकोत्तर (मास्टर्स) डिग्री होनी चाहिए (एससी/एसटी/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांग उम्मीदवारों के लिए 50%) — यह 3 वर्षीय स्नातक के बाद 2 वर्षीय मास्टर्स या 4 वर्षीय स्नातक के बाद 1 वर्षीय मास्टर्स हो सकती है। यदि आपके पास सीधे 4 वर्षीय (8 सेमेस्टर) स्नातक डिग्री है, तो कम से कम 75% अंक (छूट के साथ 70%) आवश्यक हैं। 55% अंकों के साथ एम.फिल. धारक भी पात्र हैं।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 2",
@@ -293,7 +296,7 @@ var TOPICS = [
 {
   id:"entrance", icon:"📝",
   label:{en:"Entrance Test (CET)", hi:"प्रवेश परीक्षा (CET)", mr:"प्रवेश परीक्षा (CET)"},
-  keywords:["entrance test","cet","exam pattern","net exemption","syllabus","qualifying marks","negative marking","interview marks","प्रवेश परीक्षा","सीईटी","नेट","परीक्षा कैसी","निगेटिव्ह मार्किंग","नकारात्मक अंकन","गुण किती"],
+  keywords:["entrance test","cet","exam pattern","net exemption","syllabus","qualifying marks","negative marking","interview marks","how many questions","exam duration","entrance exam","written exam","passing marks for entrance","net score","प्रवेश परीक्षा","सीईटी","नेट","परीक्षा कैसी","परीक्षेचे स्वरूप","निगेटिव्ह मार्किंग","नकारात्मक अंकन","गुण किती","प्रश्न किती"],
   answer:{
     en:"All Ph.D. candidates (except foreign candidates) must clear a Common Entrance Test (CET) and Interview. CET = 100 marks (50 MCQs, 2 marks each): 50% Research Methodology + 50% subject-specific. No negative marking. Passing marks: 50% (45% for SC/ST/VJNT/OBC-NCL/EWS/Differently-Abled). If you've cleared NET (held after 27 March 2024), you're exempt from CET — your NET score is used instead, but you still need the interview. Final selection weightage: 70% test/NET score + 30% interview.\nSource: Prospectus, R.R.D. 5",
     hi:"सभी पीएच.डी. उम्मीदवारों (विदेशी को छोड़कर) को कॉमन एंट्रेंस टेस्ट (सीईटी) और साक्षात्कार उत्तीर्ण करना अनिवार्य है। सीईटी = 100 अंक (50 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक): 50% शोध पद्धति + 50% विषय-विशिष्ट। नकारात्मक अंकन नहीं है। उत्तीर्ण अंक: 50% (एससी/एसटी/व्हीजेएनटी/ओबीसी-एनसीएल/ईडब्ल्यूएस/दिव्यांग के लिए 45%)। यदि आपने 27 मार्च 2024 के बाद नेट उत्तीर्ण किया है, तो सीईटी से छूट है — नेट स्कोर उपयोग होगा, पर साक्षात्कार देना ज़रूरी है। चयन भारांश: 70% टेस्ट/नेट स्कोर + 30% साक्षात्कार।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 5",
@@ -303,7 +306,7 @@ var TOPICS = [
 {
   id:"apply", icon:"💻",
   label:{en:"How to Apply", hi:"आवेदन कैसे करें", mr:"अर्ज कसा करावा"},
-  keywords:["apply","application","online application","how to apply","documents required","अर्ज कसा करावा","आवेदन कैसे करें","दस्तावेज","कागदपत्रे","application process"],
+  keywords:["apply","application","online application","how to apply","documents required","apply online","application form","how do i apply","registration form online","website link to apply","steps to apply","अर्ज कसा करावा","आवेदन कैसे करें","दस्तावेज","कागदपत्रे","application process","अर्ज कुठे करावा"],
   answer:{
     en:"Applications are submitted ONLINE only — no hard copy is required (you may print one for your own records). Apply via the link on www.unishivaji.ac.in under the Admission tab → 'Ph.D. Admission'. You can select more than one subject, but must pay fee and appear for the entrance test separately for each subject. Required documents: marksheets, degree certificates, migration/transfer certificate, and an NOC if you're employed.\nSource: General Instructions for Ph.D. Entrance Test",
     hi:"आवेदन केवल ऑनलाइन ही जमा किए जाते हैं — हार्ड कॉपी भेजने की आवश्यकता नहीं (अपने रिकॉर्ड के लिए प्रिंट निकाल सकते हैं)। www.unishivaji.ac.in पर एडमिशन टैब के अंतर्गत 'पीएच.डी. एडमिशन' के लिंक से आवेदन करें। एक से अधिक विषय चुन सकते हैं, पर हर विषय के लिए अलग शुल्क व अलग प्रवेश परीक्षा देनी होगी। आवश्यक दस्तावेज़: मार्कशीट, डिग्री प्रमाणपत्र, माइग्रेशन/ट्रांसफर सर्टिफिकेट, और (नौकरीपेशा हों तो) एनओसी।\nस्रोत: पीएच.डी. प्रवेश परीक्षा हेतु सामान्य निर्देश",
@@ -323,7 +326,7 @@ var TOPICS = [
 {
   id:"fees", icon:"💰",
   label:{en:"Fees (India)", hi:"शुल्क (भारत)", mr:"शुल्क (भारत)"},
-  keywords:["fees","fee","cost","tuition fee","how much","amount","fees structure","entrance fee","शुल्क","फीस","किती पैसे","फी","प्रवेश शुल्क"],
+  keywords:["fees","fee","cost","tuition fee","fee amount","fee details","total fees","admission fee","annual fee","semester fee","how much is the fee","fees structure","entrance fee","registration fee","library fee","शुल्क किती","फीस","फी किती","किती पैसे लागतात","प्रवेश शुल्क"],
   answer:{
     en:"Entrance Test fee: ₹850 (Open category) / ₹600 (Reserved category) — non-refundable. Annual Ph.D. fee for 2025-26 (Regular student/DRF): ₹16,473; for JRF/SRF/Teacher/Employed: ₹20,364. This covers registration, library, internet, tuition, lab-development, medical & welfare charges. Thesis evaluation fee is paid separately at the time of submission.\nSource: Prospectus, Annexure IX",
     hi:"प्रवेश परीक्षा शुल्क: ₹850 (खुला वर्ग) / ₹600 (आरक्षित वर्ग) — अप्रतिदेय। 2025-26 के लिए वार्षिक पीएच.डी. शुल्क (नियमित छात्र/DRF): ₹16,473; जेआरएफ/एसआरएफ/शिक्षक/नौकरीपेशा के लिए: ₹20,364। इसमें पंजीकरण, पुस्तकालय, इंटरनेट, ट्यूशन, लैब विकास, चिकित्सा व कल्याण शुल्क शामिल हैं। थीसिस मूल्यांकन शुल्क जमा करते समय अलग से देना होता है।\nस्रोत: प्रॉस्पेक्टस, परिशिष्ट IX",
@@ -383,7 +386,7 @@ var TOPICS = [
 {
   id:"duration", icon:"⏳",
   label:{en:"Duration", hi:"अवधि", mr:"कालावधी"},
-  keywords:["duration","how many years","time period","extension","अवधि","कालावधी","किती वर्षे","विस्तार","कितने साल"],
+  keywords:["duration","how many years","time period","extension","how long does phd take","time required to complete","time required","time to complete","years to complete","minimum duration","maximum duration","minimum years","how long is phd","completion time","time limit for phd","total duration","kitne saal lagte hain","phd complete hone mein kitna time","अवधि","कालावधी","किती वर्षे","किती वेळ लागतो","पूर्ण होण्यासाठी किती वेळ","पीएच.डी. किती वर्षांत पूर्ण होते","विस्तार","कितने साल","कितना समय लगता है"],
   answer:{
     en:"The Ph.D. programme runs for a minimum of 3 years (including coursework) and a maximum of 6 years from admission. A further 2-year re-registration extension is possible (total max 8 years). Women and Persons with Disabilities (40%+) get an additional 2-year relaxation (total max 10 years). Women scholars can also avail up to 240 days of Maternity/Child Care Leave.\nSource: Prospectus, R.R.D. 3",
     hi:"पीएच.डी. कार्यक्रम कम से कम 3 वर्ष (कोर्सवर्क सहित) और प्रवेश से अधिकतम 6 वर्ष तक चलता है। पुनः-पंजीकरण से 2 वर्ष का अतिरिक्त विस्तार संभव है (कुल अधिकतम 8 वर्ष)। महिलाओं व दिव्यांगजनों (40%+) को 2 अतिरिक्त वर्षों की छूट मिलती है (कुल अधिकतम 10 वर्ष)। महिला शोधार्थी 240 दिनों तक मातृत्व/शिशु देखभाल अवकाश भी ले सकती हैं।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 3",
@@ -393,7 +396,7 @@ var TOPICS = [
 {
   id:"thesis_submit", icon:"📤",
   label:{en:"Thesis Submission", hi:"थीसिस जमा करना", mr:"प्रबंध सादरीकरण"},
-  keywords:["thesis submission","pre-final thesis","final thesis","submit thesis","थीसिस जमा","प्रबंध सादर","प्रबंध जमा"],
+  keywords:["thesis","thesis submission","pre-final thesis","final thesis","submit thesis","when can i submit thesis","thesis submission deadline","pre final thesis time","थीसिस","थीसिस जमा","प्रबंध सादर","प्रबंध जमा","थीसिस कधी सादर करावी"],
   answer:{
     en:"You can submit a pre-final thesis after 2 years 6 months from registration, with your coursework passing certificate, for RAC scrutiny. The final thesis can be submitted after 3 years from registration. If the final thesis isn't submitted within 6 months of pre-final scrutiny, double tuition fee is charged for the delay. Before final submission, you must present your work to the RAC.\nSource: Prospectus, R.R.D. 13",
     hi:"पंजीकरण से 2 वर्ष 6 महीने पूरे होने के बाद, कोर्सवर्क उत्तीर्ण प्रमाणपत्र के साथ RAC जांच हेतु प्री-फाइनल थीसिस जमा की जा सकती है। पंजीकरण से 3 वर्ष बाद अंतिम थीसिस जमा की जा सकती है। प्री-फाइनल जांच के 6 महीने में अंतिम थीसिस जमा न करने पर दोगुना ट्यूशन शुल्क लगेगा। अंतिम जमा से पहले RAC के सामने अपना कार्य प्रस्तुत करना होगा।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 13",
@@ -403,7 +406,7 @@ var TOPICS = [
 {
   id:"thesis_format", icon:"🖨️",
   label:{en:"Thesis Format & Plagiarism", hi:"थीसिस प्रारूप व प्लेजियरिज़्म", mr:"प्रबंध स्वरूप व साहित्यचौर्य"},
-  keywords:["thesis format","plagiarism","similarity","font","binding","थीसिस प्रारूप","साहित्यिक चोरी","साहित्यचौर्य","फॉन्ट","बाइंडिंग"],
+  keywords:["thesis","thesis format","format of thesis","thesis submission format","submission format","format for submission","page format","print format","format","style guide","plagiarism","similarity","similarity report","similarity percentage","font","font size","binding","page margin","binding colour","थीसिस","थीसिस प्रारूप","प्रबंध स्वरूप","साहित्यिक चोरी","साहित्यचौर्य","फॉन्ट","बाइंडिंग","फॉर्मेट"],
   answer:{
     en:"Thesis must use Times New Roman font, A-4 paper, 3.5cm margins, 1.5 line spacing, printed both sides, bound with black cover & golden embossed letters. Submit 1 hard-bound copy + 5 abstract copies + 1 CD (PDF). Plagiarism check: up to 10% similarity is fine (no penalty), 10-40% requires resubmission within 6 months, 40-60% means 1-year debarment, above 60% means cancellation of registration.\nSource: Prospectus, R.R.D. 12 & Annexure II",
     hi:"थीसिस में टाइम्स न्यू रोमन फॉन्ट, A-4 कागज़, 3.5 सेमी मार्जिन, 1.5 लाइन स्पेसिंग, दोनों तरफ प्रिंट, काले कवर व सुनहरे अक्षरों में बाइंडिंग होनी चाहिए। 1 हार्ड-बाउंड कॉपी + 5 सार प्रतियां + 1 सीडी (PDF) जमा करें। साहित्यिक चोरी जांच: 10% तक ठीक (कोई दंड नहीं), 10-40% में 6 महीने में पुनः जमा, 40-60% में 1 वर्ष का प्रतिबंध, 60% से अधिक पर पंजीकरण रद्द।\nस्रोत: प्रॉस्पेक्टस, आर.आर.डी. 12 व परिशिष्ट II",
@@ -433,7 +436,7 @@ var TOPICS = [
 {
   id:"contact", icon:"☎️",
   label:{en:"Contact / Help", hi:"संपर्क / मदद", mr:"संपर्क / मदत"},
-  keywords:["contact","helpline","phone number","email","address","help desk","संपर्क","फोन नंबर","ईमेल","मदत"],
+  keywords:["contact","helpline","phone number","email","address","help desk","whom to contact","department contact number","university email id","संपर्क","फोन नंबर","ईमेल","मदत","कोणाशी संपर्क साधावा"],
   answer:{
     en:"PGBUTR / BUTR Section, Shivaji University, Kolhapur-416004, Maharashtra.\nPhone: 0231-2609139 / 2609296 / 9139\nEmail: mphilphd@unishivaji.ac.in or pgbutr3@unishivaji.ac.in\nWebsite: www.unishivaji.ac.in\nFor foreign students — International Affairs Cell: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
     hi:"PGBUTR / BUTR सेक्शन, शिवाजी विश्वविद्यालय, कोल्हापुर-416004, महाराष्ट्र।\nफोन: 0231-2609139 / 2609296 / 9139\nईमेल: mphilphd@unishivaji.ac.in या pgbutr3@unishivaji.ac.in\nवेबसाइट: www.unishivaji.ac.in\nविदेशी छात्रों के लिए — इंटरनेशनल अफेयर्स सेल: oiac@unishivaji.ac.in / dir.iac@unishivaji.ac.in",
@@ -539,17 +542,73 @@ function suAnswerTopic(topic){
   setTimeout(suShowAllTopicsButton, 520);
 }
 
+function suTokenize(str){
+  return str.toLowerCase()
+    .replace(/[.,!?;:()'"₹/]/g," ")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
 function suSearch(query){
-  var q = query.toLowerCase();
-  var best = null, bestScore = 0;
+  var qLower = " " + query.toLowerCase() + " ";
+  var qTokens = suTokenize(query);
+  var ranked = [];
   TOPICS.forEach(function(t){
     var score = 0;
     t.keywords.forEach(function(k){
-      if(q.indexOf(k.toLowerCase()) !== -1){ score += k.length; }
+      var kLower = k.toLowerCase();
+      var kWords = kLower.split(/\s+/).filter(Boolean);
+      if(kWords.length > 1 && qLower.indexOf(" " + kLower + " ") !== -1){
+        // strong signal: the exact multi-word phrase appears in the question
+        score += kWords.length * 4;
+      } else {
+        // weaker signal: every word of the keyword shows up somewhere in the
+        // question (handles reordered / paraphrased questions, e.g. "how
+        // much time is required to complete phd" still matches "time required")
+        var allPresent = kWords.every(function(w){ return qTokens.indexOf(w) !== -1; });
+        if(allPresent){ score += kWords.length; }
+      }
     });
-    if(score > bestScore){ bestScore = score; best = t; }
+    if(score > 0) ranked.push({topic:t, score:score});
   });
-  return best;
+  ranked.sort(function(a,b){ return b.score - a.score; });
+  return ranked;
+}
+
+// Decides what to do with a search: a single confident match, a short list
+// of close candidates to ask the user to disambiguate, or nothing found.
+function suResolveQuery(query){
+  var ranked = suSearch(query);
+  if(ranked.length === 0) return {type:"none"};
+  if(ranked.length === 1) return {type:"single", topic:ranked[0].topic};
+  var top = ranked[0], second = ranked[1];
+  // a clear winner: top score comfortably ahead of the runner-up
+  if(top.score >= second.score * 1.6){
+    return {type:"single", topic:top.topic};
+  }
+  // close scores: ask the student which one they meant, rather than guessing
+  var candidates = [top.topic, second.topic];
+  if(ranked.length > 2 && ranked[2].score >= second.score * 0.8){
+    candidates.push(ranked[2].topic);
+  }
+  return {type:"clarify", candidates:candidates};
+}
+
+function suShowClarifyChips(candidates){
+  var row = document.createElement('div');
+  row.className = 'su-row bot';
+  var wrap = document.createElement('div');
+  wrap.className = 'su-chip-wrap';
+  candidates.forEach(function(t){
+    var chip = document.createElement('div');
+    chip.className = 'su-chip';
+    chip.innerText = t.icon + ' ' + t.label[suLang];
+    chip.onclick = function(){ suUserSay(t.icon + ' ' + t.label[suLang]); suAnswerTopic(t); };
+    wrap.appendChild(chip);
+  });
+  row.appendChild(wrap);
+  suBody.appendChild(row);
+  suScrollDown();
 }
 
 function suSendUser(){
@@ -562,9 +621,12 @@ function suSendUser(){
     suBotSay(UI[suLang].topicsHeading, true);
     return;
   }
-  var match = suSearch(val);
-  if(match){
-    suAnswerTopic(match);
+  var result = suResolveQuery(val);
+  if(result.type === "single"){
+    suAnswerTopic(result.topic);
+  } else if(result.type === "clarify"){
+    suBotSay(UI[suLang].didYouMean, false);
+    setTimeout(function(){ suShowClarifyChips(result.candidates); }, 520);
   } else {
     suBotSay(UI[suLang].fallback, true);
   }
