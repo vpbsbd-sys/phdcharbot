@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Shivaji University — Ph.D. Helpdesk</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
 
@@ -14,28 +20,33 @@
   --good:#3F6B4F;
 }
 *{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
 .su-root{
   font-family:'Inter','Noto Sans Devanagari',sans-serif;
   color:var(--ink);
   background:var(--cream-deep);
   display:flex;
   justify-content:center;
-  min-height:100vh;
+  align-items:stretch;
+  height:100vh;
+  height:100dvh;
   padding:0;
+  overflow:hidden;
 }
 .su-app{
   width:100%;
   max-width:560px;
-  min-height:100vh;
+  height:100%;
   background:var(--cream);
   display:flex;
   flex-direction:column;
   box-shadow:0 0 40px rgba(74,27,39,0.12);
   position:relative;
+  overflow:hidden;
 }
 @media(min-width:560px){
   .su-root{padding:24px 0;}
-  .su-app{min-height:90vh;border-radius:22px;overflow:hidden;border:1px solid var(--line);}
+  .su-app{border-radius:22px;border:1px solid var(--line);}
 }
 
 /* HEADER */
@@ -199,6 +210,8 @@
 .su-body::-webkit-scrollbar{width:6px;}
 .su-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
 </style>
+</head>
+<body>
 
 <div class="su-root">
   <div class="su-app">
@@ -565,3 +578,6 @@ window.suSetLang = suSetLang;
 suSetLang('en');
 })();
 </script>
+</body>
+</html>
+
